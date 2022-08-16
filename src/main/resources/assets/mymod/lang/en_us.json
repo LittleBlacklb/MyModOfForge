@@ -1,4 +1,5 @@
 {
   "item.mymod.citrine": "Citrine",
-  "item.mymod.raw_citrine": "Raw Citrine"
+  "item.mymod.raw_citrine": "Raw Citrine",
+  "itemGroup.citrine_tab": "Citrine"
 }
