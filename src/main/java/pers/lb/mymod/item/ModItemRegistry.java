@@ -7,7 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import pers.lb.mymod.References;
 
-public class ModRegistry {
+public class ModItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.MOD_ID);
 
     public static final RegistryObject<Item> CITRINE = ITEMS.register("citrine", Citrine::new);

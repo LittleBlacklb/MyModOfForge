@@ -8,7 +8,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-import pers.lb.mymod.item.ModRegistry;
+import pers.lb.mymod.block.ModBlockRegistry;
+import pers.lb.mymod.item.ModItemRegistry;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(References.MOD_ID)
@@ -19,8 +20,8 @@ public class MyMod {
     public MyMod() {
         // Register the setup method for modloading
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        pers.lb.mymod.block.ModRegistry.register(eventBus);
-        ModRegistry.register(eventBus);
+        ModBlockRegistry.register(eventBus);
+        ModItemRegistry.register(eventBus);
         eventBus.addListener(this::setup);
 
         // Register ourselves for server and other game events we are interested in
