@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "mymod:raw_citrine"
+    }
+  },
+  "result": {
+    "item": "mymod:raw_citrine_block"
+  }
+}
