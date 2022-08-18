@@ -1,0 +1,65 @@
+package pers.lb.mymod.item.custom;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import org.jetbrains.annotations.NotNull;
+import pers.lb.mymod.block.ModBlockRegistry;
+
+import java.util.Objects;
+
+public class DowsingRodItem extends Item {
+    public DowsingRodItem() {
+        super(new Properties().tab(CreativeModeTab.TAB_MISC).durability(32).fireResistant());
+    }
+
+
+    @Override
+    public @NotNull InteractionResult useOn(UseOnContext pContext) {
+        if (pContext.getLevel().isClientSide()) {
+            Player player = Objects.requireNonNull(pContext.getPlayer(), "Player is null!");
+            BlockPos clickedPos = pContext.getClickedPos();
+            boolean isFindBlock = false;
+            for (int yOffset = 0, i = 1; yOffset < (clickedPos.getY() + 64); yOffset++) {
+                BlockPos curPos = clickedPos.below(yOffset);
+                Block block = pContext.getLevel().getBlockState(curPos).getBlock();
+                if (isValuableBlock(block)) {
+                    player.sendMessage(new TextComponent("§l" + (i++) + ". " + blockPositionFormat(block, curPos)), player.getUUID());
+                    isFindBlock = !isFindBlock;
+                }
+            }
+            if (!isFindBlock)
+                player.sendMessage(new TranslatableComponent("item.mymod.dowsing_rod.nothing_found"), player.getUUID());
+            pContext.getItemInHand().hurtAndBreak(1, pContext.getPlayer(), (p) -> p.broadcastBreakEvent(p.getUsedItemHand()));
+            return InteractionResult.CONSUME;
+        }
+        return InteractionResult.PASS;
+    }
+
+    private String blockPositionFormat(Block block, BlockPos pos) {
+        return "Find valuable block §a§l%s§r in §a§l(%d, %d, %d)§r.".formatted(block.getName().getString(), pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    private boolean isValuableBlock(Block block) {
+        final Block[] valuableBlocks = {
+                Blocks.DIAMOND_ORE,
+                Blocks.IRON_ORE,
+                ModBlockRegistry.CITRINE_ORE.get(),
+                ModBlockRegistry.RAW_CITRINE_BLOCK.get()
+        };
+        for (Block valuableBlock : valuableBlocks) {
+            if (block.equals(valuableBlock)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+}
