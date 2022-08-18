@@ -21,6 +21,8 @@ public class ModBlockRegistry {
     public static final RegistryObject<Block> CITRINE_ORE = registerBlock("citrine_ore", CitrineOreBlock::new, ModTab.CITRINE_TAB);
     public static final RegistryObject<Block> RAW_CITRINE_BLOCK = registerBlock("raw_citrine_block",RawCitrineBlock::new, ModTab.CITRINE_TAB);
 
+    public static final RegistryObject<Block> SPEEDY_BLOCK = registerBlock("speedy_block",SpeedyBlock::new, CreativeModeTab.TAB_MISC);
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> supBlock, CreativeModeTab tab) {
         RegistryObject<T> rtn = BLOCKS.register(name, supBlock);
         registryBlockItem(name,rtn, tab);
