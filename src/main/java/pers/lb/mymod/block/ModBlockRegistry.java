@@ -18,7 +18,7 @@ public class ModBlockRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, References.MOD_ID);
 
     public static final RegistryObject<Block> CITRINE_BLOCK = registerBlock("citrine_block", CitrineBlock::new, ModTab.CITRINE_TAB);
-    public static final RegistryObject<Block> CITRINE_ORE = registerBlock("citrine_ore", CitrineOre::new, ModTab.CITRINE_TAB);
+    public static final RegistryObject<Block> CITRINE_ORE = registerBlock("citrine_ore", CitrineOreBlock::new, ModTab.CITRINE_TAB);
     public static final RegistryObject<Block> RAW_CITRINE_BLOCK = registerBlock("raw_citrine_block",RawCitrineBlock::new, ModTab.CITRINE_TAB);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> supBlock, CreativeModeTab tab) {

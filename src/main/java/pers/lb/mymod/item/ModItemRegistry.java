@@ -10,9 +10,9 @@ import pers.lb.mymod.References;
 public class ModItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, References.MOD_ID);
 
-    public static final RegistryObject<Item> CITRINE = ITEMS.register("citrine", Citrine::new);
+    public static final RegistryObject<Item> CITRINE = ITEMS.register("citrine", CitrineItem::new);
 
-    public static final RegistryObject<Item> RAW_CITRINE = ITEMS.register("raw_citrine", RawCitrine::new);
+    public static final RegistryObject<Item> RAW_CITRINE = ITEMS.register("raw_citrine", RawCitrineItem::new);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
