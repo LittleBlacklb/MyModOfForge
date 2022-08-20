@@ -13,5 +13,7 @@
 
   "item.mymod.dowsing_rod.nothing_found": "§lFound nothing valuable at this location.",
   "tooltip.mymod.dowsing_rod": "Hold §l§eShift§r to show tips",
-  "tooltip.mymod.dowsing_rod.shift": "Press §e§lRight mouse§r to use it!"
+  "tooltip.mymod.dowsing_rod.shift": "Press §e§lRight mouse§r to use it!",
+
+  "tooltip.mymod.speedy_block": "Try stepping on it!"
 }
