@@ -30,6 +30,7 @@ public class DowsingRodItem extends Item {
 
     @Override
     public @NotNull InteractionResult useOn(UseOnContext pContext) {
+//        System.out.printf("useOn(...) call: %s Thread: %s%n", pContext.toString(), Thread.currentThread().getName());
         if (pContext.getLevel().isClientSide()) {
             Player player = Objects.requireNonNull(pContext.getPlayer(), "Player is null!");
             BlockPos clickedPos = pContext.getClickedPos();
@@ -44,10 +45,10 @@ public class DowsingRodItem extends Item {
             }
             if (!isFindBlock)
                 player.sendMessage(new TranslatableComponent("item.mymod.dowsing_rod.nothing_found"), player.getUUID());
-            pContext.getItemInHand().hurtAndBreak(1, pContext.getPlayer(), (p) -> p.broadcastBreakEvent(p.getUsedItemHand()));
-            return InteractionResult.CONSUME;
         }
-        return InteractionResult.PASS;
+        pContext.getItemInHand().hurtAndBreak(1, Objects.requireNonNull(pContext.getPlayer(), "Player is null!"),
+                (p) -> p.broadcastBreakEvent(p.getUsedItemHand()));
+        return super.useOn(pContext);
     }
 
     @Override
