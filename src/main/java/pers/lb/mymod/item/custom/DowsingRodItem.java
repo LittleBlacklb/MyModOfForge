@@ -2,6 +2,7 @@ package pers.lb.mymod.item.custom;
 
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -14,10 +15,9 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import pers.lb.mymod.block.ModBlockRegistry;
+import pers.lb.mymod.util.tag.BlockTags;
 
 import java.util.List;
 import java.util.Objects;
@@ -65,18 +65,19 @@ public class DowsingRodItem extends Item {
     }
 
     private boolean isValuableBlock(Block block) {
-        final Block[] valuableBlocks = {
-                Blocks.DIAMOND_ORE,
-                Blocks.IRON_ORE,
-                ModBlockRegistry.CITRINE_ORE.get(),
-                ModBlockRegistry.RAW_CITRINE_BLOCK.get()
-        };
-        for (Block valuableBlock : valuableBlocks) {
-            if (block.equals(valuableBlock)) {
-                return true;
-            }
-        }
-        return false;
+//        final Block[] valuableBlocks = {
+//                Blocks.DIAMOND_ORE,
+//                Blocks.IRON_ORE,
+//                ModBlockRegistry.CITRINE_ORE.get(),
+//                ModBlockRegistry.RAW_CITRINE_BLOCK.get()
+//        };
+//        for (Block valuableBlock : valuableBlocks) {
+//            if (block.equals(valuableBlock)) {
+//                return true;
+//            }
+//        }
+//        return false;
+        return Registry.BLOCK.getHolderOrThrow(Registry.BLOCK.getResourceKey(block).get()).is(BlockTags.DOWSING_ROD_VALUABLES);
     }
 
 }
