@@ -1,18 +1,25 @@
 package pers.lb.mymod.item.custom;
 
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import pers.lb.mymod.block.ModBlockRegistry;
 
+import java.util.List;
 import java.util.Objects;
 
 public class DowsingRodItem extends Item {
@@ -41,6 +48,15 @@ public class DowsingRodItem extends Item {
             return InteractionResult.CONSUME;
         }
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+        if (Screen.hasShiftDown())
+            pTooltipComponents.add(new TranslatableComponent("tooltip.mymod.dowsing_rod.shift"));
+        else
+            pTooltipComponents.add(new TranslatableComponent("tooltip.mymod.dowsing_rod"));
+//        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
     private String blockPositionFormat(Block block, BlockPos pos) {

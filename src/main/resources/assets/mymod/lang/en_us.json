@@ -11,5 +11,7 @@
 
   "itemGroup.citrine_tab": "Citrine",
 
-  "item.mymod.dowsing_rod.nothing_found": "§lFound nothing valuable at this location."
+  "item.mymod.dowsing_rod.nothing_found": "§lFound nothing valuable at this location.",
+  "tooltip.mymod.dowsing_rod": "Hold §l§eShift§r to show tips",
+  "tooltip.mymod.dowsing_rod.shift": "Press §e§lRight mouse§r to use it!"
 }
