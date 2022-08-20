@@ -39,7 +39,7 @@ public class DowsingRodItem extends Item {
                 BlockPos curPos = clickedPos.below(yOffset);
                 Block block = pContext.getLevel().getBlockState(curPos).getBlock();
                 if (isValuableBlock(block)) {
-                    player.sendMessage(new TextComponent("§l" + (i++) + ". " + blockPositionFormat(block, curPos)), player.getUUID());
+                    player.sendMessage(new TextComponent("%d. %s".formatted(i++, blockPositionFormat(block, curPos))), player.getUUID());
                     isFindBlock = !isFindBlock;
                 }
             }
