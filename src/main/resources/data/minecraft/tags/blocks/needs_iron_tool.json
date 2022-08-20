@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "mymod:citrine_block",
+    "mymod:citrine_ore",
+    "mymod:raw_citrine_block",
+    "mymod:speedy_block"
+  ]
+}
