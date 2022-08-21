@@ -4,7 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraftforge.client.event.ClientChatEvent;
 import pers.lb.mymod.esp.SyncRenderList;
-import pers.lb.mymod.event.handler.RenderLevelStageEventHandler;
 import pers.lb.mymod.util.RenderBlockProp;
 
 import java.util.Objects;
@@ -61,7 +60,7 @@ public class ESPCommandsProcess {
                         positionInt[1],
                         positionInt[2],
                         rgbColor));
-                RenderLevelStageEventHandler.requestedRefresh = true;
+                ESPRenderProcess.requestedRefresh = true;
             }
             // remove i
             case "remove" -> {
@@ -83,7 +82,7 @@ public class ESPCommandsProcess {
                     sendMsg("Fail to remove %s".formatted(propsIndex[i].getPos()), player);
                 }
                 isListed = false;
-                RenderLevelStageEventHandler.requestedRefresh = true;
+                ESPRenderProcess.requestedRefresh = true;
             }
             case "list" -> {
                 isListed = true;
@@ -92,7 +91,7 @@ public class ESPCommandsProcess {
                     sendMsg("§l%d§r. %s".formatted(i, propsIndex[i].getPos().toShortString()), player);
                 }
             }
-            case "refresh" -> RenderLevelStageEventHandler.requestedRefresh = true;
+            case "refresh" -> ESPRenderProcess.requestedRefresh = true;
         }
         event.setCanceled(true);  // Not to send msg.
     }
